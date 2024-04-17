@@ -1,0 +1,153 @@
+:root {
+    --blue-background: rgb(53 174 195);
+    --black-button: rgb(86, 82, 82);
+    --white-header: white;
+    --header-width: 150px;
+    --burn-orange: #D34A44;
+    --blue-primary: #2564CF;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+input:focus {
+    outline: none;
+}
+@font-face {
+    font-family: "ubuntu-regular";
+    src: URL("../assets/fonts/Ubuntu-Regular.ttf") format("truetype");
+}
+
+body {
+    font-family: "ubuntu-regular";
+}
+
+/* --------- Nav Bar ----------- */
+
+.nav-bar.blur{
+    filter: blur(2px);
+    pointer-events: none;
+}
+
+.bar {
+    /* padding: 12px 4px;
+    background-color: var(--blue-primary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center; */
+    padding: 0px 0px;
+    background-color: var(--blue-primary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+}
+
+.logo h3 {
+    color: white;
+    padding: 0px 8px;
+    cursor: pointer;
+}
+
+.tabs{
+    height: 100%;
+}
+
+.tabs ul{
+    height: 100%;
+}
+
+.tabs li {
+    list-style-type: none;
+    display: inline-flex;
+    /* margin: 0px 8px; */
+    padding: 0px 8px;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+    height: 100%;
+    align-items: center;
+}
+
+.tabs li:hover {
+    background-color: #444;
+    scale: 1.01;
+}
+
+.tabs-list.highlight {
+    color: black;
+}
+
+.search-block {
+    position: relative;
+}
+
+.search-block input {
+    width: 300px;
+    padding: 5.2px 4px;
+    border: none;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.search-block button {
+    /* position: absolute; */
+    padding: 5.2px 6px;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    transform: translateX(-5px);
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.club {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+
+/* --------- Nav Bar End ----------- */
+
+#chartdiv {
+    width: 98%;
+    height: 500px;
+}
+
+.label{
+    font-weight: 600;
+}
+
+#error-message{
+    text-align: center;
+    color: #D34A44;
+}
+
+.enter-date{
+    margin: 8px;
+    padding: 4px 16px;
+    display: none;
+}
+
+.enter-date.active{
+    margin: 8px;
+    padding: 4px 16px;
+    display: inline-block;
+}
+
+.sub-text{
+    font-size: 11px;
+    font-style: italic;
+}
+
+.select-date-block{
+    margin: 8px 16px;
+}
+
+.form-input{
+    padding: 4px 8px;
+}

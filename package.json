@@ -1,0 +1,15 @@
+{
+  "name": "assignment-5_2",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000a\u0000s\u0000s\u0000i\u0000g\u0000n\u0000m\u0000e\u0000n\u0000t\u0000_\u00005\u0000\r\u0000 \u0000",
+  "main": "index.js",
+  "scripts": {
+    "start": "json-server --watch ./data/store_1.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "json-server": "^0.17.4"
+  }
+}

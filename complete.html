@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./style/complete.css">
+    <script defer src="./script/complete.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+
+    <!-- <div id="nav-placeholder">
+
+    </div> -->
+
+    <nav class="bar" id="bar-id">
+        <div class="logo">
+            <h3 onclick="location.href='index.html'">TASK</h3>
+        </div>
+        <div class="club">
+            <form class="search-block">
+                <input type="text" autocomplete="off" id="search-input-id" placeholder="Search.." maxlength="120">
+                <button onclick="submitSearchValue()" ><i class="fa fa-search"></i></button>
+            </form>
+            <div class="tabs">
+                <ul>
+                    <li class="tabs-list" id="link-1" onclick=" location.href='pending.html'">Pending Task</li>
+                    <li class="tabs-list" id="link-2" onclick=" location.href='complete.html'">Completed Task</li>
+                    <li class="tabs-list" id="link-3" onclick=" location.href='chart.html'">Charts</li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="overlay" id="overlay"></div>
+    <div class="form-block" id="pop-for-upload">
+        <form onsubmit="handleUploadData()" class="submit-form">
+            <div class="form-header-block">
+                <h1 class="form-header">
+                    Add task
+                </h1>
+            </div>
+
+            <div class="form-element-block">
+                <div class="form-input-element-block">
+                    <div class="form-titile-block">
+                        <label for="">Task</label>
+                        <p class="error-message" id="name-error-id"></p>
+                    </div>
+                    <input type="text" class="form-input" placeholder="Enter task" autocomplete="off" onkeyup="handleNameKeyUp()" name="company-name" id="task-name-id" maxlength="50" required>
+                </div>
+                <div class="form-input-element-block">
+                    <div class="form-titile-block">
+                        <label for="">Create date</label>
+                        <p class="error-message" id="create-date-error-id"></p>
+                    </div>
+                    <input type="date" id="create-date-input" onchange="handleChangeDate()" class='form-input' required/>
+                </div>
+                <div class="form-input-element-block">
+                    <div class="form-titile-block">
+                        <label for="">Due date</label>
+                        <p class="error-message" id="due-date-error-id"></p>
+                    </div>
+                    <input type="date" id="due-date-input" onchange="handleChangeDate()" class='form-input' required/>
+                </div>
+                
+                <div class="form-input-element-block">
+                    <div class="form-titile-block">
+                        <label for="">Priority</label>
+                        <p class="error-message" id="priority-error-id"></p>
+                    </div>
+                    <div class="priority-radio-block">
+                        <div class="priority-input-block">
+                            <input type="radio" id="high-id" name="priority" value="high">
+                            <label for="html">High</label>
+                        </div>
+                        <div class="priority-input-block">
+                            <input type="radio" id="medium-id" name="priority" value="medium">
+                            <label for="html">Medium</label>
+                        </div>
+                        <div class="priority-input-block">
+                            <input type="radio" id="low-id" name="priority" value="low" checked>
+                            <label for="html">Low</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pop-up-button-block">
+                <button class="button" type="submit">Upload</button>
+                <button class="button" onclick=" event.preventDefault(); handleClosePopup()">Close</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- <div class="header-text-block">
+        <h4>Completed task</h4>
+    </div> -->
+
+    <div class="container" id="container-id">
+
+        <table width="100%" id="table-id">
+            <thead>
+                <tr>
+                    <th>Reject</th>
+                    <th width="240px" onclick="handleDataSort(1)"> 
+                        <div class="inner-table">
+                            <div>Task</div>
+                            <div class="table-icon-block">
+                                <img src="./assets/images/top.png" id="arr1" class="arrow1" alt="">
+                            </div>
+                        </div>
+                    </th>
+                    <th width="150px" onclick="handleDataSort(2)">
+                        <div class="inner-table">
+                            <div>Created Date</div>
+                            <div class="table-icon-block">
+                                <img src="./assets/images/top.png" id="arr2" class="arrow2" alt="">
+                            </div>
+                        </div>
+                    </th>
+                    <th width="150px" onclick="handleDataSort(3)"> 
+                        <div class="inner-table">
+                            <div>Updated Date</div>
+                            <div class="table-icon-block">
+                                <img src="./assets/images/top.png" id="arr3" class="arrow3" alt="">
+                            </div>
+                        </div>
+                    </th>
+                    <th width="150px" onclick="handleDataSort(4)"> 
+                        <div class="inner-table">
+                            <div>Due Date</div>
+                            <div class="table-icon-block">
+                                <img src="./assets/images/top.png" id="arr4" class="arrow4" alt="">
+                            </div>
+                        </div>
+                    </th>
+                    <th width="150px" onclick="handleDataSort(6)"> 
+                        <div class="inner-table">
+                            <div>Complete Date</div>
+                            <div class="table-icon-block">
+                                <img src="./assets/images/top.png" id="arr6" class="arrow6" alt="">
+                            </div>
+                        </div>
+                    </th>
+                    <th width="150px" onclick="handleDataSort(5)"> 
+                        <div class="inner-table">
+                            <div>Priority</div>
+                            <div class="table-icon-block">
+                                <img src="./assets/images/top.png" id="arr5" class="arrow5" alt="">
+                            </div>
+                        </div>
+                    </th>
+                    <th width="70px">
+                        <div>Delete</div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="table-body" id="table-wrapper-id">
+                <!-- <tr>
+                    <td>HHH</td>
+                    <td>Alfreds Futterkiste Alfreds Futterkiste Alfreds Futterkiste.</td>
+                    <td>Germany</td>
+                    <td>Maria Anders</td>
+                    <td>Germany</td>
+                    <td>Maria Anders</td>
+                    <td>Germany</td>
+                </tr> -->
+
+            </tbody>
+        </table>
+
+    </div>
+    
+    <div class="error-message-block">
+        <p class="no-data-error" id="no-data-text-id"></p>
+    </div>
+
+    <div class="bottom-block" id="bottom-block-id">
+        
+        <div class="select-and-page-block">
+            <div class="select-block">
+                <label for="pageSize">Page size</label>
+                <select name="Search by" class="select-options" onchange="handleSelectionChange()" id="select-option-id" >
+                    <!-- <option value="0">0</option> -->
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                    <option value="40">40</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                    <option value="500">500</option>
+                </select>
+            </div>
+            <div class="page-display-detial-block">
+                <p>Page <span id="span-current-page-id">0</span> of <span id="span-end-page-id">0</span></p>
+                <div class="button-block">
+                    <button class="filter-button" id="decrement-button-id" onclick="decrementPage()"><</button>
+                    <button class="filter-button" id="increment-button-id" onclick="incrementPage()">></button>
+                </div>
+            </div>
+
+        </div>
+       
+    </div>
+
+    <div id="popup-update" class="popup">
+        <div class="popup-content">
+            <div class="seccess-img-block">
+                <img src="./assets/images/checked.png" class="success-img" alt="">
+            </div>
+            <p>Data Updated Successfully!</p>
+        </div>
+    </div>
+
+    <div id="popup-delete" class="popup">
+        <div class="popup-content">
+            <div class="seccess-img-block">
+                <img src="./assets/images/bin.png" class="success-img" alt="">
+            </div>
+            <p id="">Task deleted Successfully!</p>
+        </div>
+    </div>
+
+    <div id="popup-remove" class="popup">
+        <div class="popup-content">
+            <div class="seccess-img-block">
+                <img src="./assets/images/checked.png" class="success-img" alt="">
+            </div>
+            <p>Task added to pending status</p>
+        </div>
+    </div>
+
+    <audio id="myAudio">
+        <source src="./assets/sound/tap-notification-180637.mp3" type="audio/ogg">
+    </audio>
+    <!-- <script>
+        $(function(){
+          $("#nav-placeholder").load("nav.html");
+        });
+    </script> -->
+</body>
+</html>

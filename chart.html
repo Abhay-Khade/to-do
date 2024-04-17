@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./style/chart.css">
+    <script defer src="./script/chart.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+    <script src="//cdn.amcharts.com/lib/4/themes/kelly.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+    
+    <!-- <div id="nav-placeholder">
+
+    </div> -->
+
+    <nav class="bar" id="bar-id">
+        <div class="logo">
+            <h3 onclick="location.href='index.html'">TASK</h3>
+        </div>
+        <div class="club">
+            <form class="search-block">
+                <!-- <input type="text" autocomplete="off" id="search-input-id" placeholder="Search.." maxlength="120">
+                <button onclick="submitSearchValue()" ><i class="fa fa-search"></i></button> -->
+            </form>
+            <div class="tabs">
+                <ul>
+                    <li class="tabs-list" id="link-1" onclick=" location.href='pending.html'">Pending Task</li>
+                    <li class="tabs-list" id="link-2" onclick=" location.href='complete.html'">Completed Task</li>
+                    <li class="tabs-list" id="link-3" onclick=" location.href='chart.html'">Charts</li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="select-date-block">
+        <select class="form-input" name="select-level" id="select-level-id" onchange="handleSelectChange()">
+            <option value="none">Filter by</option>
+            <option value="0">Start date</option>
+            <option value="1">End date</option>
+            <option value="2">Complete data</option>
+        </select>
+        <!-- <label class="label" for="date">Select date </label><span class="sub-text">(sort by create date)</span> -->
+        <input class="enter-date" type="date" name="date" onchange="makeChartForDate()" id="selected-date-id">
+    </div>
+    <!-- <div class="select-date-block">
+        <label class="label" for="date">Select date </label><span class="sub-text">(sort by due date)</span>
+        <input class="enter-date" type="date" name="date" onchange="makeChartForDateDue()" id="selected-due-date-id">
+    </div> -->
+    <p id="error-message"></p>
+    <div id="chartdiv"></div>
+
+    <!-- <script>
+        $(function () {
+            $("#nav-placeholder").load("nav.html");
+        });
+    </script> -->
+</body>
+</html>

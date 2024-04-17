@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO-DO's</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./style/style.css">
+    <script defer src="./script/script.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+
+<body>
+
+
+    <nav class="bar" id="bar-id">
+        <div class="logo">
+            <h3 onclick="location.href='index.html'">TASK</h3>
+        </div>
+        <div class="club">
+            <form class="search-block">
+                <input type="text" autocomplete="off" id="search-input-id" placeholder="Search.." maxlength="120">
+                <button onclick="submitSearchValue()" ><i class="fa fa-search"></i></button>
+            </form>
+            <div class="tabs">
+                <ul>
+                    <li class="tabs-list" id="link-1" onclick=" location.href='pending.html'">Pending Task</li>
+                    <li class="tabs-list" id="link-2" onclick=" location.href='complete.html'">Completed Task</li>
+                    <li class="tabs-list" id="link-3" onclick=" location.href='chart.html'">Charts</li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="grid-container" id="grid-container-id">
+        <div class="side-pannel">
+            <form onsubmit="handleUploadData()" class="submit-form">
+                <div class="form-header-block">
+                    <h1 class="form-header">
+                        Add task
+                    </h1>
+                </div>
+
+                <div class="form-element-block">
+                    <div class="form-input-element-block">
+                        <div class="form-titile-block">
+                            <label for=""><span class="required-span">*</span>Task name</label>
+                            <p class="error-message" id="name-error-id"></p>
+                        </div>
+                        <input type="text" class="form-input" placeholder="Enter task name" onkeyup="handleNameKeyUp()"
+                            name="company-name" id="task-name-id" maxlength="50" autocomplete="off" required>
+                    </div>
+                    <div class="form-input-element-block">
+                        <div class="form-titile-block">
+                            <label for="">
+                                <span class="required-span">*</span>Create date
+                            </label>
+                            <p class="error-message" id="create-date-error-id"></p>
+                        </div>
+                        <input type="date" id="create-date-input" onchange="handleChangeDate()" class='form-input'
+                            required />
+                    </div>
+                    <div class="form-input-element-block">
+                        <div class="form-titile-block">
+                            <label for="">
+                                <span class="required-span">*</span>Due date
+                            </label>
+                            <p class="error-message" id="due-date-error-id"></p>
+                        </div>
+                        <input type="date" id="due-date-input" onchange="handleChangeDate()" class='form-input'
+                            required />
+                    </div>
+
+                    <div class="form-input-element-block">
+                        <div class="form-titile-block">
+                            <label for="">Priority</label>
+                            <p class="error-message" id="priority-error-id"></p>
+                        </div>
+                        <div class="priority-radio-block">
+                            <div class="priority-input-block">
+                                <input type="radio" id="high-id" name="priority" value="high">
+                                <label for="html">High</label>
+                            </div>
+                            <div class="priority-input-block">
+                                <input type="radio" id="medium-id" name="priority" value="medium">
+                                <label for="html">Medium</label>
+                            </div>
+                            <div class="priority-input-block">
+                                <input type="radio" id="low-id" name="priority" value="low" checked>
+                                <label for="html">Low</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pop-up-button-block">
+                    <button class="button" type="submit">Add</button>
+                </div>
+            </form>
+        </div>
+        <div class="main-screen">
+            
+            <div class="main-wrapper">
+                <span class="today-span">Today's task</span>
+                <div class="date-header">
+                    <p class="today-date" id="today-date-id">100</p>
+                </div>
+                <div class="error-message-block">
+                    <p class="no-data-error" id="no-data-text-id">No data to display</p>
+                </div>
+                <div class="accordium-block" id="accordion">
+                    <!-- Accordion items will be dynamically added here -->
+                </div>
+            </div>
+            
+
+            <!-- <div class="select-tag">
+                <p>Pending</p>
+                <p>Complete</p>
+            </div> -->
+
+            <!-- <div class="accordium-block">
+                <button class="accordion">
+                    <div class="accor-info-block">
+                        <h4>Task Name</h4>
+                        <h4>Priority</h4>
+                    </div>
+                </button>
+                <div class="panel">
+                    <div class="task-main-block">
+                        <div class="task-info-block">
+                            <div class="task-info-left">
+                                <h5>Created date</h5>
+                            </div>
+                            <div class="task-info-right">
+                                <h5>Answer</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="task-main-block">
+                        <div class="task-info-block">
+                            <div class="task-info-left">
+                                <h5>Updated date</h5>
+                            </div>
+                            <div class="task-info-right">
+                                <h5>Answer</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="task-main-block">
+                        <div class="task-info-block">
+                            <div class="task-info-left">
+                                <h5>Priority date</h5>
+                            </div>
+                            <div class="task-info-right">
+                                <h5>Answer</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div> -->
+        </div>
+    </div>
+
+    <div id="popup-update" class="popup">
+        <div class="popup-content">
+            <div class="seccess-img-block">
+                <img src="./assets/images/checked.png" class="success-img" alt="">
+            </div>
+            <p>Data Updated Successfully!</p>
+        </div>
+    </div>
+
+    <div id="popup-create" class="popup">
+        <div class="popup-content">
+            <div class="seccess-img-block">
+                <img src="./assets/images/checked.png" class="success-img" alt="">
+            </div>
+            <p>Task Created Successfully!</p>
+        </div>
+    </div>
+
+    <div id="popup-exist" class="popup">
+        <div class="popup-content">
+            <div class="seccess-img-block">
+                <img src="./assets/images/remove.png" class="success-img" alt="">
+            </div>
+            <p id="">Task Name Already Exist!</p>
+        </div>
+    </div>
+
+    <div id="popup-add" class="popup">
+        <div class="popup-content">
+            <div class="seccess-img-block">
+                <img src="./assets/images/checked.png" class="success-img" alt="">
+            </div>
+            <p>Task Complete</p>
+        </div>
+    </div>
+
+    <div id="popup-remove" class="popup">
+        <div class="popup-content">
+            <div class="seccess-img-block">
+                <img src="./assets/images/checked.png" class="success-img" alt="">
+            </div>
+            <p>Task added to pending status</p>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+    <div class="form-block" id="pop-up-update-id">
+        <form onsubmit="handleUpdateDetails()" class="submit-update-form">
+            <div class="form-header-block">
+                <h1 class="form-header">
+                    Update task
+                </h1>
+            </div>
+            <div class="form-element-block">
+                <div class="form-input-element-block">
+                    <div class="form-titile-block">
+                        <label for="">
+                            <span class="required-span">*</span>Task
+                        </label>
+                        <p class="error-message" id="name-error-id"></p>
+                    </div>
+                    <input type="text" class="form-input" placeholder="Company name" autocomplete="off" name="company-name" id="task-name-update-id" maxlength="50" required>
+                </div>
+                <div class="form-input-element-block">
+                    <div class="form-titile-block">
+                        <label for="">Create date</label>
+                        <p class="error-message" id="create-date-error-id"></p>
+                    </div>
+                    <input type="date" id="create-date-update-input" class='form-input' disabled/>
+                </div>
+                
+                <div class="form-input-element-block">
+                    <div class="form-titile-block">
+                        <label for="">
+                            <span class="required-span">*</span>Due date
+                        </label>
+                        <p class="error-message" id="due-date-update-error-id"></p>
+                    </div>
+                    <input type="date" id="due-date-update-input" class='form-input' required/>
+                </div>
+                <!-- <div class="form-input-element-block">
+                    <div class="form-titile-block">
+                        <label for="">Complete date</label>
+                        <p class="error-message" id="complete-update-past-error-id"></p>
+                        <p class="error-message" id="complete-update-future-error-id"></p>
+                    </div>
+                    <input type="date" id="complete-date-update-input" class='form-input' />
+                </div> -->
+                <div class="form-input-element-block">
+                    <div class="form-titile-block">
+                        <label for="">Priority</label>
+                        <p class="error-message" id="name-error-id"></p>
+                    </div>
+                    <div class="priority-radio-block">
+                        <div class="priority-input-block">
+                            <input type="radio" id="high-id" name="priority-update" value="high">
+                            <label for="html">High</label>
+                        </div>
+                        <div class="priority-input-block">
+                            <input type="radio" id="medium-id" name="priority-update" value="medium">
+                            <label for="html">Medium</label>
+                        </div>
+                        <div class="priority-input-block">
+                            <input type="radio" id="low-id" name="priority-update" value="low">
+                            <label for="html">Low</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pop-up-update-button-block">
+                <button class="button" id="update-button-id" type="submit">Upload</button>
+                <button class="button" onclick=" event.preventDefault(); handleClosePopup()">Close</button>
+            </div>
+        </form>
+    </div>
+
+
+
+    <!-- <script>
+        $(function () {
+            $("#nav-placeholder").load("nav.html");
+        });
+    </script> -->
+</body>
+
+</html>
